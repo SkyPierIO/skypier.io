@@ -61,6 +61,7 @@ import "aos/dist/aos.css"; // AOS styles
                       <button type="submit">Join!</button>
                     </div>
                 </form>
+                <div class="waitlist-messages">Thank you for joining our waitlist!</div>
             </div>
         </div>
     </section>
@@ -98,7 +99,7 @@ import "aos/dist/aos.css"; // AOS styles
                             <li>Multiple independent nodes allows us to have competitive pricing without compromising quality</li>
                         </ul>
                         <ul class="actions">
-                            <!-- <li><a href="generic.html" class="button">Learn more</a></li> -->
+                            <li><a href="about.html" class="button">Learn more</a></li>
                         </ul>
                     </div>
                 </div>
@@ -226,4 +227,22 @@ import "aos/dist/aos.css"; // AOS styles
 
         // runs on initial page load
         aosInit();
+    </script>
+    <script>
+        $("#waitlist-form").on('submit',function(event) {
+            event.preventDefault(); // to prevent default page reloading
+            var dataString = $(this).serialize(); // to get the form data
+            $.ajax({
+                type: "POST",
+                url: "https://script.google.com/macros/s/AKfycbxgowDv4E0Kqqkex4FjL78XK6DIpRE_6emhaOcs1zQJ_MGDC0mXIKmW_BwA4tH-oswK/exec",
+                data: dataString,
+                success: function(data){
+                    $('#waitlist-form')[0].reset(); // to reset form data
+                }
+            }).done(function(data){
+                setTimeout(function () {
+                    $('.waitlist-messages').addClass('active');
+                }, 500);
+            });
+        });
     </script>

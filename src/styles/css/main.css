@@ -4039,3 +4039,10 @@ input, select, textarea {
 			}
 
 		}
+
+		.waitlist-messages {
+			display: none;
+		}
+		.active {
+			display: block;
+		}
