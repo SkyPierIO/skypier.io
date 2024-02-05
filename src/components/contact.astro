@@ -1,0 +1,48 @@
+<!-- Contact -->
+    <section id="contact" class="wrapper">
+        <div class="inner" style="padding-top: 100px;">
+            <div class="container">
+                <h1>Get in touch</h1>
+                <p>Please don't hesitate to send us a message if you want to learn more about our products!</p>
+            </div>
+            <!-- <div class="split style1"> -->
+                <section class="container">
+                    <form 
+                    oninput="subject.value = purpose.value + ' New submission'" 
+                    method="POST" action="https://formspree.io/f/xdoqaozn">
+                        <div class="fields">
+                            <div class="field half">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" />
+                            </div>
+                            <div class="field half">
+                                <label for="email">Purpose</label>
+                                <select name="purpose" id="purpose">
+                                    <option value="[Invest]">Investment Inquiry</option>
+                                    <option value="[Partner]">Partner Support</option>
+                                    <option value="[Customer]">Customer Support</option>
+                                    <option value="[Other]">Other</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" />
+                            </div>
+                            <div class="field">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- your other form fields go here -->
+                        <button type="submit">Send Message</button>
+
+                        <!-- <ul class="actions">
+                            <li><a href="" class="button submit">Send Message</a></li>
+                        </ul> -->
+                    </form>
+                </section>
+                
+            <!-- </div> -->
+        </div>
+    </section>
