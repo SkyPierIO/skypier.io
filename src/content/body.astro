@@ -58,7 +58,11 @@ import "aos/dist/aos.css"; // AOS styles
                       <input name="Email" type="email" placeholder="Email address" required>
                       <!-- <input name="Name" type="text" placeholder="Name" required> -->
                       <pre>    </pre>
-                      <button type="submit">Join!</button>
+                      <!-- <button type="submit">Join!</button> -->
+                      <button class="g-recaptcha" 
+                      data-sitekey="reCAPTCHA_site_key" 
+                      data-callback='onSubmit' 
+                      data-action='submit'>Join!</button>
                     </div>
                 </form>
                 <div class="waitlist-messages">Thank you for joining our waitlist!</div>
@@ -246,3 +250,9 @@ import "aos/dist/aos.css"; // AOS styles
             });
         });
     </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+          document.getElementById("waitlist-form").submit();
+        }
+      </script>
