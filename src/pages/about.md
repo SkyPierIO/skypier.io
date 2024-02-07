@@ -19,7 +19,7 @@ There are generally two types of peers in our marketplace: host and client users
 <!-- ![Skypier Marketplace](../../src/assets/img/AboutSkypier.png) -->
 
 ### Enterprise Services
-Recognizing the desire to have control over the network infrastructure of an organization, we offer enterprise-level service support for organizations to manage their IT security as a privacy stack with Zero-Trust access control through our multi-token authentication approach. Moreover, we can help you secure and protect your data by compartmentalization in decentralized storage systems with purposeful fragmentation and encryption. For more information about our Enterprise Support, please reach out through the **[Inquiry Form](/#contact)** and discuss how we can strengthen your organization's security infrastructure.
+Recognizing the desire to have control over the network infrastructure, we offer enterprise-level service for organizations to self-manage their IT security. As a privacy stack with Zero-Trust access control, we can help you secure and protect your data through purposeful data fragmentation and encryption. For more information about our Enterprise Support, please reach out through the **[Inquiry Form](/#contact)** and discuss how we can strengthen your organization's security infrastructure.
 
 
 ## Skypier FAQ
