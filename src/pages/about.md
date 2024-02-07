@@ -28,13 +28,13 @@ Recognizing the desire to have control over the network infrastructure, we offer
 
 - **How may I qualify to be a Host?**
 
-    The main requirements are a stable internet with an upload speed of 50 mbps or higher, and a computer that is on and connection constantly.
+    The main requirements are a stable internet with an upload speed of 50 mbps or higher, and a computer that is on and connected constantly.
 - **How much may I earn as a Host?**
 
-    This may varies due to a number of factors, such as your location and internet speed.
+    This may vary due to a number of factors, such as the supply and demand for your location and internet speed.
 - **What if we don’t have a computer that can connect to the internet constantly?**
 
-    We are currently developing a solution so that you may use a low-cost computer such as Raspberry Pi. We will share an update once it’s available!
+    We are currently developing a solution so that you may use a low-cost computer such as a Raspberry Pi. We will share an update once it’s available!
 </details>
 
 <details>
@@ -42,11 +42,11 @@ Recognizing the desire to have control over the network infrastructure, we offer
 
 - **How would I know if the Node I am connecting to is not a owned by a bad person?**
 
-We are implementing a Host scoring system so that you can see their internet speed and if they have been reported with negative reviews. 
+    We are implementing a Host scoring system so that you can see their internet quality and if they have been reported with negative reviews. 
 </details>
 
 <details>
 <summary>Enterprise FAQ</summary>
 
-Coming Soon…
+    Coming Soon…
 </details>
