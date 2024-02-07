@@ -16,7 +16,7 @@ Skypier is a community-based marketplace for listing and rerouting internet traf
 
 There are generally two types of peers in our marketplace: host and client users. A **Host** user is anyone who leases out a portion of their internet bandwidth as a **Node**, and a **Client** user is anyone who subscribes to access the internet through a Host’s Node. The Host would then earn from the Client's subscription fee. As a marketplace, we connect hosts and clients and facilitate the process of routing the Client’s internet traffic.
 
-![Slypier Marketplace](src/assets/img/AboutSkypier.png)
+![Slypier Marketplace](../../src/assets/img/AboutSkypier.png)
 
 ### Enterprise Services
 Recognizing the desire to have control over the network infrastructure of an organization, we offer enterprise-level service support for organizations to manage their IT security as a privacy stack with Zero-Trust access control through our multi-token authentication approach. Moreover, we can help you secure and protect your data by compartmentalization in decentralized storage systems with purposeful fragmentation and encryption. For more information about our Enterprise Support, please reach out through the **[Inquiry Form](/#contact)** and discuss how we can strengthen your organization's security infrastructure.
