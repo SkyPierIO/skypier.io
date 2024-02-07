@@ -9,17 +9,17 @@ description: About Skypier and its business model
 
 ## How Skypier work?
 
-Skypier is a community-based marketplace for listing and rerouting internet traffic through encrypted channels, cultivating a sharing economy by allowing internet access point owners to rent out their unused or underused bandwidth. We have developed a secure communication protocol to ensure a private peer-to-peer (P2P) connection beyond just messages like WhatsApp, Signal, or Telegram. This means it can handle the high throughput requirements of applications such as streaming and gaming. Any internet-connected device can be a peer, e.g., phone, laptop, tablet, IoT devices such as Roomba and Smart TV, etc.
+Skypier is a community-based marketplace for listing internet access points, **Nodes**, such as WiFi hotspots, and rerouting internet traffic through these Nodes in encrypted channels. We have developed a secure communication protocol to ensure a private peer-to-peer (P2P) connection beyond just messages like WhatsApp, Signal, or Telegram. This means it can handle the high throughput requirements in applications such as streaming and gaming. Any internet-connected device can be a peer, e.g., phone, laptop, tablet, IoT devices such as Roomba and Smart TV, etc.
 
 
 🔐 ***Our protocol is serviceable to both Enterprise as well as individuals. For Enterprise services, please see the Enterprise section below.***
 
-There are generally two types of peers in our marketplace: host and client users. A **Host** user is anyone who leases out a portion of their internet bandwidth as a **Node**, and a **Client** user is anyone who subscribes to access the internet through a Host’s Node. The Host would then earn from the Client's subscription fee. As a marketplace, we connect hosts and clients and facilitate the process of routing the Client’s internet traffic.
+There are generally two types of peers in our marketplace: host and client users. A **Host** user is anyone who leases out a portion of their internet bandwidth, and a **Client** user is anyone who subscribes to access the internet through a Host’s Node. The Host would then earn from the Client's subscription fee. As a marketplace, we connect hosts and clients and facilitate the process of rerouting the Client’s internet traffic, cultivating a sharing economy by allowing Node Hosts to rent out their unused or underused bandwidth.
 
 <!-- ![Skypier Marketplace](../../src/assets/img/AboutSkypier.png) -->
 
 ### Enterprise Services
-Recognizing the desire to have control over the network infrastructure of an organization, we offer enterprise-level service support for organizations to manage their IT security as a privacy stack with Zero-Trust access control through our multi-token authentication approach. Moreover, we can help you secure and protect your data by compartmentalization in decentralized storage systems with purposeful fragmentation and encryption. For more information about our Enterprise Support, please reach out through the **[Inquiry Form](/#contact)** and discuss how we can strengthen your organization's security infrastructure.
+Recognizing the desire to have control over the network infrastructure, we offer enterprise-level service for organizations to self-manage their IT security. As a privacy stack with Zero-Trust access control, we can help you secure and protect your data through purposeful data fragmentation and encryption. For more information about our Enterprise Support, please reach out through the **[Inquiry Form](/#contact)** and discuss how we can strengthen your organization's security infrastructure.
 
 
 ## Skypier FAQ
