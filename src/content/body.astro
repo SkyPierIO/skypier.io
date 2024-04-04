@@ -61,7 +61,6 @@ import "aos/dist/aos.css"; // AOS styles
       </ul>
     </div>
     <div class="container">
-      <!-- <form action="action_page.php"> -->
       <form id="waitlist-form">
         <h2>Join the waitlist today:</h2>
         <div style="max-width:550px; display:flex;">
@@ -339,22 +338,33 @@ import "aos/dist/aos.css"; // AOS styles
       aosInit();
     </script>
     <script>
-      $("#waitlist-form").on("submit", function (event) {
-        event.preventDefault(); // to prevent default page reloading
-        var dataString = $(this).serialize(); // to get the form data
-        $.ajax({
-          type: "POST",
-          url: "https://script.google.com/macros/s/AKfycbxgowDv4E0Kqqkex4FjL78XK6DIpRE_6emhaOcs1zQJ_MGDC0mXIKmW_BwA4tH-oswK/exec",
-          data: dataString,
-          success: function (data) {
-            $("#waitlist-form")[0].reset(); // to reset form data
-          },
-        }).done(function (data) {
-          setTimeout(function () {
-            $(".waitlist-messages").addClass("active");
-          }, 500);
+      document
+        .getElementById("waitlist-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // to prevent default form submission
+          var form = event.target;
+          var formData = new FormData(form);
+
+          fetch(
+            "https://script.google.com/macros/s/AKfycbxgowDv4E0Kqqkex4FjL78XK6DIpRE_6emhaOcs1zQJ_MGDC0mXIKmW_BwA4tH-oswK/exec",
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              form.reset(); // to reset form data
+              setTimeout(function () {
+                document
+                  .querySelector(".waitlist-messages")
+                  .classList.add("active");
+              }, 500);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
         });
-      });
     </script>
   </section>
 </section>
