@@ -2,36 +2,253 @@
 import Logo from "@svg/skypier_baseline.svg"    
 import { Astronav, MenuItems, MenuIcon,  StickyHeader } from "astro-navbar";
 ---
+
+<style is:global>
+    #sidebar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    #sidebar .header-container {
+        background: rgba(0, 0, 0, 0.75) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+    }
+
+    #sidebar .header-inner {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto !important;
+        padding: 0 1.5rem !important;
+        height: 70px !important;
+    }
+
+    #sidebar .logo-link {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 70px !important;
+        transition: opacity 0.2s ease;
+    }
+
+    #sidebar .logo-link:hover {
+        opacity: 0.85;
+    }
+
+    #sidebar .logo-link img {
+        height: 46px !important;
+        width: auto !important;
+        display: block !important;
+        vertical-align: middle !important;
+    }
+
+    #sidebar .nav-menu {
+        display: flex !important;
+        align-items: center !important;
+        height: 70px !important;
+    }
+
+    #sidebar .nav-menu ul {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        gap: 2.5rem !important;
+        align-items: center !important;
+        height: 0px !important;
+    }
+
+    #sidebar .nav-menu ul li {
+        display: flex !important;
+        align-items: center !important;
+        height: 70px !important;
+    }
+
+    #sidebar .nav-menu ul li a {
+        display: flex !important;
+        align-items: center !important;
+        color: rgba(255, 255, 255, 0.85) !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+        position: relative !important;
+        transition: color 0.2s ease !important;
+        padding: 0 0.5rem !important;
+        height: 100% !important;
+        line-height: 1 !important;
+    }
+
+    #sidebar .nav-menu ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: #0ea5e9;
+        transition: width 0.3s ease;
+    }
+
+    #sidebar .nav-menu ul li a:hover,
+    #sidebar .nav-menu ul li a.active {
+        color: #0ea5e9 !important;
+    }
+
+    #sidebar .nav-menu ul li a:hover::after,
+    #sidebar .nav-menu ul li a.active::after {
+        width: 80% !important;
+    }
+
+    #sidebar .menu-icon {
+        color: white !important;
+    }
+
+    body {
+        padding-top: 70px !important;
+    }
+
+    @media (max-width: 1024px) {
+        #sidebar .header-inner,
+        #sidebar .logo-link,
+        #sidebar .nav-menu,
+        #sidebar .nav-menu ul,
+        #sidebar .nav-menu ul li {
+            height: 60px !important;
+        }
+
+        #sidebar .logo-link img {
+            height: 40px !important;
+        }
+
+        body {
+            padding-top: 60px !important;
+        }
+    }
+</style>
+
 <section id="sidebar">
     <StickyHeader>  
         <Astronav>
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0">
-                <a href="/" class="logo-link">
-                    <img
-                    src={Logo.src}
-                    class="App-logo-header"
-                    alt="skypier logo"
-                    style="padding: 5px 5px 5px 1rem"
-                    />			
-                </a>
-                <MenuItems class="hidden lg:flex">
-                    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                        <ul>
-                            <li><a href="/#intro">Home</a></li>
-                            <li><a href="/products">Products</a></li>
-                            <li><a href="/#intention">Why Skypier?</a></li>
-                            <li><a href="/#team">About us</a></li>
-                            <li><a href="#contact">Contact</a></li>                    
-                        </ul>
+            <div class="header-container">
+                <div class="header-inner">
+                    <a href="/" class="logo-link">
+                        <img
+                            src={Logo.src}
+                            alt="Skypier logo"
+                        />
+                    </a>
+                    
+                    <MenuItems class="hidden lg:flex">
+                        <nav class="nav-menu">
+                            <ul>
+                                <li><a href="/#intro" class="nav-link" data-section="intro">Home</a></li>
+                                <li><a href="/products" class="nav-link" data-section="products">Products</a></li>
+                                <li><a href="/#intention" class="nav-link" data-section="intention">Why Skypier?</a></li>
+                                <li><a href="/#team" class="nav-link" data-section="team">About us</a></li>
+                                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </MenuItems>
+                    
+                    <div class="block lg:hidden">
+                        <MenuIcon class="w-6 h-6 menu-icon" />
                     </div>
-                </MenuItems>
-                <div class="empty"></div>
-                <div class="block lg:hidden">
-                    <MenuIcon class="w-4 h-4 text-gray-800" />
                 </div>
             </div>
         </Astronav>
     </StickyHeader>
-</section> 
+</section>
 
+<script is:inline>
+    // Active section indicator - runs immediately
+    (function() {
+        function updateActiveLink() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const currentPath = window.location.pathname;
+            const currentHash = window.location.hash;
+            
+            console.log('Current path:', currentPath);
+            console.log('Current hash:', currentHash);
 
+            // First, check if we're on a specific page (like /products)
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const section = link.getAttribute('data-section');
+                
+                // Check if link matches current page
+                if (href === currentPath || href === currentPath + '/' || 
+                    (currentPath.includes('/products') && section === 'products')) {
+                    link.classList.add('active');
+                    console.log('Added active to page:', section);
+                } else if (currentPath === '/' || currentPath === '') {
+                    // We're on homepage, remove active for page-specific links
+                    if (section === 'products') {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+
+            // Only set up intersection observer on the homepage
+            if (currentPath === '/' || currentPath === '') {
+                const sections = document.querySelectorAll('section[id]');
+                
+                if (sections.length === 0) {
+                    console.log('No sections found');
+                    return;
+                }
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                            const id = entry.target.getAttribute('id');
+                            console.log('Active section:', id);
+                            
+                            navLinks.forEach(link => {
+                                const section = link.getAttribute('data-section');
+                                // Only update section-based links, not page links like products
+                                if (section !== 'products') {
+                                    if (section === id) {
+                                        link.classList.add('active');
+                                        console.log('Added active to:', section);
+                                    } else {
+                                        link.classList.remove('active');
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }, {
+                    threshold: [0.3, 0.5, 0.7],
+                    rootMargin: '-80px 0px -50% 0px'
+                });
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+
+                console.log('Observer initialized for', sections.length, 'sections');
+            }
+        }
+
+        // Run immediately
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updateActiveLink);
+        } else {
+            updateActiveLink();
+        }
+
+        // Also handle Astro page transitions
+        document.addEventListener('astro:page-load', updateActiveLink);
+        
+        // Handle hash changes
+        window.addEventListener('hashchange', updateActiveLink);
+    })();
+</script>
