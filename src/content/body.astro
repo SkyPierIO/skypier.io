@@ -7,361 +7,373 @@ import Megan from "@img/megan.webp";
 import "aos/dist/aos.css"; // AOS styles
 ---
 
-<!-- Intro --><!-- <section id="intro" class="wrapper style1 fullscreen fade-up"> -->
-<section id="intro" class="wrapper fullscreen fade-up">
+<!-- Hero Section - Clean monochromatic design -->
+<section id="intro" class="wrapper fullscreen bg-gray-950">
+  
   <div class="inner">
-    <div class="container">
-      <div class="md:flex">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <!-- Hero content with logo and headline -->
+      <div class="grid md:grid-cols-2 gap-8 items-center mb-16">
         <div
-          class="md:shrink-0 flex justify-center items-center"
-          data-aos="fade-up"
-          data-aos-duration="1500"
+          class="flex justify-center items-center"
+          data-aos="fade-right"
+          data-aos-duration="800"
         >
           <img
-            src={Logo}
-            class="App-logo"
+            src={Logo.src}
+            class="w-64 h-64 md:w-80 md:h-80"
             alt="skypier logo"
-            style="height: 25vh;"
           />
         </div>
-        <div class="p-8 m-auto md:text-left sm:text-center">
+        <div class="text-center md:text-left space-y-6">
           <h1
-            class="text-gray-100 text-5xl"
-            data-aos="fade-up"
-            data-aos-duration="1500"
+            class="text-5xl md:text-7xl font-bold text-white leading-tight"
+            data-aos="fade-left"
+            data-aos-duration="800"
           >
-            Embark securely on <span class="highlight-text">web3</span>
+            Embark securely on <span class="text-primary-500">web3</span>
           </h1>
           <h2
-            class="text-gray-400 text-3xl"
-            data-aos="fade-up"
+            class="text-2xl md:text-3xl text-gray-400 font-light"
+            data-aos="fade-left"
             data-aos-duration="1000"
           >
             The future of Decentralized Hybrid Cloud and Privacy Stack.
           </h2>
         </div>
       </div>
-    </div>
-    <div class="glassed-container" data-aos="fade-up" data-aos-duration="2000">
-      <p>
-        Skypier is the gateway that empowers people to express and explore
-        anonymously without compromising their privacy or quality of access. Our
-        Token Gated decentralized Network is a subscription based peer-to-peer
-        VPN that enable anyone to create their own hybrid cloud.
-      </p>
-      <ul class="actions">
-        <li>
+
+      <!-- Value proposition card -->
+      <div class="bg-gray-900 rounded-xl border border-gray-800 p-8 md:p-12 mb-12" 
+           data-aos="fade-up" 
+           data-aos-duration="800">
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+          Skypier is the gateway that empowers people to express and explore
+          anonymously without compromising their privacy or quality of access. Our
+          Token Gated decentralized Network is a subscription based peer-to-peer
+          VPN that enables anyone to create their own hybrid cloud.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
           <a
             href="https://tinglik.notion.site/On-boarding-the-SkyPier-Network-0967d277dfee49dfb2e537a1b89961b6"
             target="_blank"
             rel="noopener noreferrer"
-            class="button scrolly">Demo</a
+            class="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
           >
-        </li>
-        <li><a href="#contact" class="button scrolly">Contact</a></li>
-      </ul>
-    </div>
-    <div class="container">
-      <form id="waitlist-form">
-        <h2>Join the waitlist today:</h2>
-        <div style="max-width:550px; display:flex;">
-          <input
-            name="Email"
-            type="email"
-            placeholder="Email address"
-            required
-          /><br />
-          <!-- <input name="Name" type="text" placeholder="Name" required> -->
-        </div><br />
-        <button type="submit">Join!</button>
-      </form>
-      <div class="waitlist-messages">Thank you for joining our waitlist!</div>
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+            View Demo
+          </a>
+          <a 
+            href="/products" 
+            class="inline-flex items-center px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg border border-gray-700 transition-colors duration-200"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+            </svg>
+            Our Products
+          </a>
+          <a 
+            href="#contact" 
+            class="inline-flex items-center px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg border border-gray-700 transition-colors duration-200"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Waitlist form -->
+      <div class="bg-gray-900 rounded-xl border border-primary-900 p-8 max-w-2xl mx-auto" 
+           data-aos="fade-up" 
+           data-aos-duration="1000">
+        <form id="waitlist-form" class="space-y-6">
+          <h2 class="text-3xl font-bold text-center text-white mb-6">Join the waitlist today</h2>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input
+              name="Email"
+              type="email"
+              placeholder="Enter your email address"
+              required
+              class="flex-1 px-6 py-4 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            />
+            <button 
+              type="submit"
+              class="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
+            >
+              Join Now!
+            </button>
+          </div>
+          <div class="waitlist-messages hidden text-center text-green-400 font-semibold bg-green-900 bg-opacity-20 border border-green-800 rounded-lg py-3">
+            Thank you for joining our waitlist!
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- One -->
-<section id="intention" class="wrapper style5 spotlights">
-  <section>
-    <!-- <a href="#" class="image"><img src="images/pic01.jpg" alt="" data-position="center center" /></a> -->
-    <div class="content container">
-      <div class="inner">
-        <h2>Problems</h2>
-        <div
-          class="glassed-container"
-          data-aos="fade-up"
-          data-aos-duration="1500"
-        >
-          <ul>
-            <li>
-              People want to have the security confidence and control over who
-              can access their data and why
-            </li>
-            <li>
-              Centralized network providers could be a single point of failure
-              if they are compromised by bad actors
-            </li>
-            <li>
-              Centralized network providers are often closed-source with a false
-              sense of security
-            </li>
-            <li>
-              Existing decentralized solutions require Hosts to earn in their
-              company's cryptocurrency
-            </li>
-          </ul>
-          <ul class="actions">
-            <!-- <li><a href="generic.html" class="button">Learn more</a></li> -->
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <!-- <a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a> -->
-    <div class="content container">
-      <div class="inner">
-        <h2>Solutions</h2>
-        <div
-          class="glassed-container"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
-          <ul>
-            <li>
-              Anyone with internet access can be our Partner as a Node Host and
-              earn in their preferred currency
-            </li>
-            <li>
-              Each node operates independently to compartmentalize information
-              through our network
-            </li>
-            <li>
-              We are completely open-sourced, allowing anyone to inspect and
-              provide feedback to improve our security, UX, and infrastructure
-            </li>
-            <li>
-              Multiple independent nodes allows us to have competitive pricing
-              without compromising quality
-            </li>
-          </ul>
-          <ul class="actions">
-            <li><a href="about.html" class="button">Learn more</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- <section>
-            <a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-            <div class="content">
-                <div class="inner">
-                    <h2>Ultricies aliquam</h2>
-                    <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-                    <ul class="actions">
-                        <li><a href="generic.html" class="button">Learn more</a></li>
-                    </ul>
-                </div>
+<!-- Problems & Solutions Section -->
+<section id="intention" class="wrapper bg-gray-900 py-20">
+  <div class="container mx-auto px-4 max-w-7xl">
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Problems -->
+      <section data-aos="fade-right" data-aos-duration="800">
+        <div class="h-full bg-gray-950 rounded-xl border border-red-900 p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-red-900 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
             </div>
-        </section>
-    </section> -->
+            <h2 class="text-3xl font-bold text-white">Problems</h2>
+          </div>
+          <ul class="space-y-4 text-gray-300">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>People want to have the security confidence and control over who can access their data and why</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>Centralized network providers could be a single point of failure if they are compromised by bad actors</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>Centralized network providers are often closed-source with a false sense of security</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>Existing decentralized solutions require Hosts to earn in their company's cryptocurrency</span>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-  <!-- Two -->
-  <section id="team" class="wrapper style1">
-    <div class="inner">
-      <div class="container">
-        <h1>About us</h1>
+      <!-- Solutions -->
+      <section data-aos="fade-left" data-aos-duration="800">
+        <div class="h-full bg-gray-950 rounded-xl border border-green-900 p-8">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-green-900 bg-opacity-20 rounded-lg flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-white">Solutions</h2>
+          </div>
+          <ul class="space-y-4 text-gray-300">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Anyone with internet access can be our Partner as a Node Host and earn in their preferred currency</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Each node operates independently to compartmentalize information through our network</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>We are completely open-sourced, allowing anyone to inspect and provide feedback to improve our security, UX, and infrastructure</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Multiple independent nodes allows us to have competitive pricing without compromising quality</span>
+            </li>
+          </ul>
+          <div class="mt-6">
+            <a 
+              href="/about" 
+              class="inline-flex items-center text-primary-400 hover:text-primary-300 font-semibold"
+            >
+              Learn more
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="wrapper bg-gray-950 py-20">
+  <div class="inner">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h1 class="text-5xl font-bold text-white mb-4">
+          About Us
+        </h1>
+        <div class="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
       </div>
+      
       <div
-        class="gradient-container drop-shadow-md"
-        data-aos="slide-up"
-        data-aos-duration="1500"
+        class="bg-gray-900 rounded-xl border border-gray-800 p-8 md:p-12 mb-12"
+        data-aos="fade-up"
+        data-aos-duration="800"
       >
-        <p>
-          Our team are made up of product leaders, engineers, and developers
-          from Palantir, French Military, and Akamai Technologies.
+        <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-center">
+          Our team is made up of product leaders, engineers, and developers
+          from <span class="font-semibold text-primary-400">Palantir</span>, <span class="font-semibold text-primary-400">French Military</span>, and <span class="font-semibold text-primary-400">Akamai Technologies</span>.
           We have a track-record of creating mission-critical decentralized
-          security products for mission critical organizations and we have the
+          security products for mission-critical organizations and we have the
           partnerships and resources to help you build your own decentralized
           network.
         </p>
       </div>
-      <div class="container">
-        <ul class="flex flex-row flex-wrap">
-          <li
-                style="min-width: 400px;"class="flex gap-x-6 py-2 px-8"
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Team Member 1 -->
+        <div
+          class="bg-gray-900 rounded-xl border border-gray-800 p-6 hover:border-primary-500 transition-colors duration-200"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="flex flex-col items-center text-center">
+            <img
+              class="grayscale hover:grayscale-0 h-32 w-32 rounded-full ring-2 ring-gray-700 mb-4 transition-all duration-200"
+              src={Ting.src}
+              alt="Ting Lik To"
+            />
+            <h3 class="text-2xl font-bold text-white mb-2">Ting Lik To</h3>
+            <p class="text-primary-400 font-semibold mb-4">CEO</p>
+            <div class="flex gap-4">
+              <a
+                href="https://www.linkedin.com/in/tinglik/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors duration-200"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tinglik/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-200"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
-            data-aos="zoom-in-right"
-            data-aos-duration="1000"
-          >
-            <div class="flex min-w-0 gap-x-4">
-              <img
-                class="grayscale hover:grayscale-0 h-24 w-24 overflow-hidden rounded-full ring-2 ring-gray-700 dark:ring-gray-100"
-                src={Ting}
-                alt="avatar"
-              />
-              <div class="min-w-0 flex-auto pt-2">
-                <p class="text-xl font-semibold leading-6 text-gray-50 mb-1">
-                  Ting Lik To
-                </p>
-                <p class="text-sm leading-1 text-gray-550 mb-1">CEO</p>
-                <p class="truncate text-lg leading-1 text-gray-500">
-                  <a
-                    href="https://www.linkedin.com/in/tinglik/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="mr-1 fab fa-lg fa-linkedin"></i>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/tinglik/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="mr-1 fab fa-lg fa-github"></i>
-                  </a>
-                </p>
-              </div>
+        <!-- Team Member 2 -->
+        <div
+          class="bg-gray-900 rounded-xl border border-gray-800 p-6 hover:border-primary-500 transition-colors duration-200"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <div class="flex flex-col items-center text-center">
+            <img
+              class="grayscale hover:grayscale-0 h-32 w-32 rounded-full ring-2 ring-gray-700 mb-4 transition-all duration-200"
+              src={Groot.src}
+              alt="Groot"
+            />
+            <h3 class="text-2xl font-bold text-white mb-2">Groot</h3>
+            <p class="text-primary-400 font-semibold mb-4">CTO</p>
+            <div class="flex gap-4">
+              <a
+                href="https://x.com/rootshe11"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-gray-800 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors duration-200"
+              >
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a
+                href="https://github.com/smolgroot"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors duration-200"
+              >
+                <i class="fab fa-github text-xl"></i>
+              </a>
             </div>
-          </li>
-          <li
-                style="min-width: 400px;"class="flex gap-x-6 py-2 px-8"
+          </div>
+        </div>
 
-            data-aos="zoom-in-right"
-            data-aos-duration="1500"
-          >
-            <div class="flex min-w-0 gap-x-4">
-              <img
-                class="grayscale hover:grayscale-0 h-24 w-24 overflow-hidden rounded-full ring-2 ring-gray-700 dark:ring-gray-100"
-                src={Groot}
-                alt="avatar"
-              />
-              <div class="min-w-0 flex-auto pt-2">
-                <p class="text-xl font-semibold text-gray-50 mb-1">Smolgroot</p>
-                <p class="text-sm leading-1 text-gray-550 mb-1">CTO</p>
-                <p class="truncate text-lg leading-1 text-gray-500">
-                  <a
-                    href="https://x.com/rootshe11"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="mr-1 fab fa-lg fa-twitter"></i>
-                  </a>
-                  <a
-                    href="https://github.com/smolgroot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="mr-1 fab fa-lg fa-github"></i>
-                  </a>
-                </p>
-              </div>
+        <!-- Team Member 3 -->
+        <div
+          class="bg-gray-900 rounded-xl border border-gray-800 p-6 hover:border-primary-500 transition-colors duration-200"
+          data-aos="fade-up"
+          data-aos-duration="1200"
+        >
+          <div class="flex flex-col items-center text-center">
+            <img
+              class="grayscale hover:grayscale-0 h-32 w-32 rounded-full ring-2 ring-gray-700 mb-4 transition-all duration-200"
+              src={Megan.src}
+              alt="Megan Drown"
+            />
+            <h3 class="text-2xl font-bold text-white mb-2">Megan Drown</h3>
+            <p class="text-primary-400 font-semibold mb-4">Product / Business Development</p>
+            <div class="flex gap-4">
+              <a
+                href="https://www.linkedin.com/in/megan-drown/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors duration-200"
+              >
+                <i class="fab fa-linkedin text-xl"></i>
+              </a>
             </div>
-          </li>
-          <li
-            class="flex gap-x-6 py-2 px-8"
-            style="min-width: 400px;"
-            data-aos="zoom-in-right"
-            data-aos-duration="2000"
-          >
-            <div class="flex min-w-0 gap-x-4">
-              <img
-                class="grayscale hover:grayscale-0 h-24 w-24 overflow-hidden rounded-full ring-2 ring-gray-700 dark:ring-gray-100"
-                src={Megan}
-                alt="avatar"
-              />
-              <div class="min-w-0 flex-auto pt-2">
-                <p class="text-xl font-semibold leading-6 text-gray-50 mb-1">
-                  Megan Drown
-                </p>
-                <p class="text-sm leading-1 text-gray-550 mb-1">
-                  Product / Business development
-                </p>
-                <p class="truncate text-lg leading-1 text-gray-500">
-                  <a
-                    href="https://www.linkedin.com/in/megan-drown/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="mr-1 fab fa-lg fa-linkedin"></i>
-                  </a>
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-      <!-- <div class="features">
-                <section>
-                    <span class="icon solid major fa-code"></span>
-                    <h3>Lorem ipsum amet</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon solid major fa-lock"></span>
-                    <h3>Aliquam sed nullam</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon solid major fa-cog"></span>
-                    <h3>Sed erat ullam corper</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon solid major fa-desktop"></span>
-                    <h3>Veroeros quis lorem</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon solid major fa-link"></span>
-                    <h3>Urna quis bibendum</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-                <section>
-                    <span class="icon major fa-gem"></span>
-                    <h3>Aliquam urna dapibus</h3>
-                    <p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-                </section>
-            </div>
-            <ul class="actions">
-                <li><a href="generic.html" class="button">Learn more</a></li>
-            </ul>
-        </div> -->
     </div>
-    <script>
-      import { aosInit } from "@js/aos";
+  </div>
+  
+  <script>
+    import { aosInit } from "@js/aos";
 
-      // runs on initial page load
-      aosInit();
-    </script>
-    <script>
-      document
-        .getElementById("waitlist-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // to prevent default form submission
-          var form = event.target;
-          var formData = new FormData(form);
+    // runs on initial page load
+    aosInit();
+  </script>
+  
+  <script>
+    document
+      .getElementById("waitlist-form")
+      ?.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const form = event.target as HTMLFormElement;
+        const formData = new FormData(form);
 
-          fetch(
-            "https://script.google.com/macros/s/AKfycbxgowDv4E0Kqqkex4FjL78XK6DIpRE_6emhaOcs1zQJ_MGDC0mXIKmW_BwA4tH-oswK/exec",
-            {
-              method: "POST",
-              body: formData,
+        fetch(
+          "https://script.google.com/macros/s/AKfycbxgowDv4E0Kqqkex4FjL78XK6DIpRE_6emhaOcs1zQJ_MGDC0mXIKmW_BwA4tH-oswK/exec",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            form.reset();
+            const messageElement = document.querySelector(".waitlist-messages");
+            if (messageElement) {
+              messageElement.classList.remove("hidden");
             }
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              form.reset(); // to reset form data
-              setTimeout(function () {
-                document
-                  .querySelector(".waitlist-messages")
-                  .classList.add("active");
-              }, 500);
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
-        });
-    </script>
-  </section>
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+  </script>
 </section>

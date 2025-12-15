@@ -6,9 +6,9 @@ import { Astronav, MenuItems, MenuIcon,  StickyHeader } from "astro-navbar";
     <StickyHeader>  
         <Astronav>
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-0">
-                <a href="/index.html" class="logo-link">
+                <a href="/" class="logo-link">
                     <img
-                    src={Logo}
+                    src={Logo.src}
                     class="App-logo-header"
                     alt="skypier logo"
                     style="padding: 5px 5px 5px 1rem"
@@ -17,9 +17,10 @@ import { Astronav, MenuItems, MenuIcon,  StickyHeader } from "astro-navbar";
                 <MenuItems class="hidden lg:flex">
                     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                         <ul>
-                            <li><a href="#intro">What's Skypier?</a></li>
-                            <li><a href="#intention">Why Skypier?</a></li>
-                            <li><a href="#team">About us</a></li>
+                            <li><a href="/#intro">Home</a></li>
+                            <li><a href="/products">Products</a></li>
+                            <li><a href="/#intention">Why Skypier?</a></li>
+                            <li><a href="/#team">About us</a></li>
                             <li><a href="#contact">Contact</a></li>                    
                         </ul>
                     </div>
@@ -32,4 +33,5 @@ import { Astronav, MenuItems, MenuIcon,  StickyHeader } from "astro-navbar";
         </Astronav>
     </StickyHeader>
 </section> 
+
 

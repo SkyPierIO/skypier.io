@@ -20,6 +20,18 @@ export default defineConfig({
     }
   }), sitemap(), compress(), react()],
   vite: {
+    resolve: {
+      alias: {
+        '@globals': '/src/components/global',
+        '@component': '/src/components',
+        '@style': '/src/styles',
+        '@js': '/src/js',
+        '@util': '/utils',
+        '@img': '/src/assets/img',
+        '@svg': '/src/assets/svg',
+        '@icon': '/src/assets/svg/icon',
+      },
+    },
     plugins: [VitePWA({
       registerType: "autoUpdate",
       manifest,

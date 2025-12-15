@@ -4,6 +4,7 @@ import { SEO } from "astro-seo"
 
 // Style imports
 import "@style/tailwind.css"
+import "@style/scroll-fixes.css"
 
 // Animations
 import "aos/dist/aos.css"
@@ -183,14 +184,12 @@ const {
 
 	<Header />
 
-	<!-- <body class="min-h-screen flex flex-col w-full overflow-x-hidden"> -->
-	<body class="is-preload">
-		<!-- <main class="flex flex-1 flex-col h-[100%] w-full"> -->
-			<!-- Wrapper -->
-			<div id="wrapper">
-				<slot />
-			</div>
-		<!-- </main> -->
+	<!-- Removed is-preload class - it was causing all elements to animate on scroll, creating jank -->
+	<body>
+		<!-- Wrapper -->
+		<div id="wrapper">
+			<slot />
+		</div>
 
 		<script>
 			// This is a hack to get vite-plugin-pwa to generate a sw.js file.

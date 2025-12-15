@@ -1,0 +1,52 @@
+/* Simple native smooth scrolling - no JavaScript needed */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure body and wrapper don't interfere with scrolling */
+body {
+  overflow-x: hidden;
+}
+
+#wrapper {
+  position: relative;
+}
+
+/* PERFORMANCE FIX: Disable the heavy wrapper fade animations that cause scroll jank */
+.wrapper.fade-up > .inner,
+.wrapper.fade-down > .inner,
+.wrapper.fade > .inner {
+  transform: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+.wrapper.fade-up.inactive > .inner,
+.wrapper.fade-down.inactive > .inner,
+.wrapper.fade.inactive > .inner,
+body.is-preload .wrapper.fade-up > .inner,
+body.is-preload .wrapper.fade-down > .inner,
+body.is-preload .wrapper.fade > .inner {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Disable heavy spotlight animations during scroll */
+.spotlights > section.inactive > .image:before,
+body.is-preload .spotlights > section > .image:before {
+  opacity: 1 !important;
+}
+
+.spotlights > section.inactive > .content > .inner,
+body.is-preload .spotlights > section > .content > .inner {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove scroll-behavior for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
