@@ -20,6 +20,18 @@ export type Product = {
   stats: string[]
   ctas: ProductCTA[]
   badge?: string
+  image?: string
+  overview?: string
+}
+
+export type ManifestoPoint = {
+  title: string
+  body: string
+}
+
+export type Faq = {
+  question: string
+  answer: string
 }
 
 export type TeamMember = {

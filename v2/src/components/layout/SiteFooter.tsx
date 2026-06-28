@@ -21,7 +21,7 @@ export function SiteFooter({ currentYear }: SiteFooterProps) {
       <Container maxWidth={false} sx={{ py: 10, px: { xs: 3, md: 6 } }}>
         <Grid container spacing={4}>
           {/* Column 1: Skypier Branding */}
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid size={{ xs: 12, md: 6, lg: 3 }}>
             <Stack spacing={2}>
               <Box 
                 component="img" 
@@ -42,7 +42,7 @@ export function SiteFooter({ currentYear }: SiteFooterProps) {
           </Grid>
 
           {/* Column 2: Products */}
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid size={{ xs: 12, md: 6, lg: 3 }}>
             <Typography 
               variant="h6" 
               sx={{ 
@@ -86,7 +86,7 @@ export function SiteFooter({ currentYear }: SiteFooterProps) {
           </Grid>
 
           {/* Column 3: Useful Links */}
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid size={{ xs: 12, md: 6, lg: 3 }}>
             <Typography 
               variant="h6" 
               sx={{ 
@@ -144,7 +144,7 @@ export function SiteFooter({ currentYear }: SiteFooterProps) {
           </Grid>
 
           {/* Column 4: Contact */}
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid size={{ xs: 12, md: 6, lg: 3 }}>
             <Typography 
               variant="h6" 
               sx={{ 

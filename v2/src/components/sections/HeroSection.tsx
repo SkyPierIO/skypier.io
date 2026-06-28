@@ -5,16 +5,14 @@ import { AnimatedKnotLogo } from '../brand/AnimatedKnotLogo'
 import { SpeedBackground } from '../brand/SpeedBackground'
 import { animate, stagger } from 'animejs'
 
-const HEADLINE_WORDS = ['Stay', 'private.', 'Be', 'you.']
-
-// Transition: hero goes pure black → light section bg (#F5F7FA) over 480 px starting at 120 px scroll
-const TRANS_START = 120
-const TRANS_RANGE = 480
-const LIGHT_BG = [245, 247, 250] as const
+const HEADLINE_LINES = [
+  ['Stay', 'private.'],
+  ['Be', 'you.'],
+]
 
 export function HeroSection() {
-  const [scrollY, setScrollY] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     let rafId = 0
@@ -22,12 +20,8 @@ export function HeroSection() {
       cancelAnimationFrame(rafId)
       rafId = requestAnimationFrame(() => setScrollY(window.scrollY))
     }
-    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      cancelAnimationFrame(rafId)
-      window.removeEventListener('scroll', onScroll)
-    }
+    return () => { cancelAnimationFrame(rafId); window.removeEventListener('scroll', onScroll) }
   }, [])
 
   useEffect(() => {
@@ -50,7 +44,6 @@ export function HeroSection() {
       ease: 'outExpo',
     })
 
-    // subtitle + CTA start after the last word's animation peaks
     const afterStart = 420 + 95 * (wordEls.length - 1) + 480
     const afterAnim = animate(afterEls, {
       opacity: [0, 1],
@@ -63,18 +56,13 @@ export function HeroSection() {
     return () => { wordsAnim.pause(); afterAnim.pause() }
   }, [])
 
-  const progress = Math.max(0, Math.min((scrollY - TRANS_START) / TRANS_RANGE, 1))
-  const [r, g, b] = LIGHT_BG
-  const heroBg = `rgb(${Math.round(progress * r)},${Math.round(progress * g)},${Math.round(progress * b)})`
-  const particlesOpacity = Math.max(0, 1 - progress * 2.2)
-  // Fill fades in on first scroll then stays. Ft progress=1 both sides are #F5F7FA so the boundary vanishes naturally
-  const fillOpacity = Math.min(scrollY / 80, 1)
-  // Atmosphere glow fades in then fades out as the hero brightens
-  const glowOpacity = fillOpacity * Math.max(0, 1 - progress)
+  // Content shrinks as the planet rises — scale 1→0.65, opacity 1→0 over first 70% of hero height
+  const shrink = Math.min(scrollY / (window.innerHeight * 0.7), 1)
+  const contentScale = 1 - shrink * 0.35
+  const contentOpacity = Math.max(0, 1 - shrink * 1.4)
 
   const handleDiscover = () => {
-    const heroEl = document.getElementById('hero')
-    window.scrollTo({ top: (heroEl?.offsetHeight ?? window.innerHeight), behavior: 'smooth' })
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
   }
 
   return (
@@ -82,84 +70,21 @@ export function HeroSection() {
       id="hero"
       ref={heroRef}
       sx={{
-        scrollMarginTop: 92,
-        minHeight: { xs: 'calc(100svh - 68px)', md: 'calc(100svh - 76px)' },
-        position: 'relative',
+        position: 'sticky',
+        top: { xs: 68, md: 76 },
+        zIndex: 0,
+        height: { xs: 'calc(100svh - 68px)', md: 'calc(100svh - 76px)' },
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: heroBg,
+        backgroundColor: '#000000',
       }}
     >
       {/* Particles */}
-      <Box sx={{ position: 'absolute', inset: 0, opacity: particlesOpacity, pointerEvents: 'none', zIndex: 0 }}>
+      <Box sx={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
         <SpeedBackground />
       </Box>
-
-      {/* Planet horizon. Fnvisible at top, fades in on scroll, atmospheric blur */}
-      <svg
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          height: 'clamp(56px, 9vw, 108px)',
-          zIndex: 2,
-          pointerEvents: 'none',
-          display: 'block',
-          overflow: 'visible',
-        }}
-      >
-        <defs>
-          <filter id="atm-wide" x="-5%" y="-600%" width="110%" height="1400%">
-            <feGaussianBlur stdDeviation="16" />
-          </filter>
-          <filter id="atm-tight" x="-5%" y="-200%" width="110%" height="500%">
-            <feGaussianBlur stdDeviation="5" />
-          </filter>
-        </defs>
-
-        {/* Wide halo. Foft cyan atmosphere well above the surface */}
-        <path
-          d="M-80,92 C360,38 1080,38 1520,92"
-          stroke="rgba(140,230,255,0.28)"
-          strokeWidth="72"
-          fill="none"
-          filter="url(#atm-wide)"
-          opacity={glowOpacity}
-        />
-
-        {/* Tighter inner glow. Frighter, closer to surface */}
-        <path
-          d="M-80,92 C360,38 1080,38 1520,92"
-          stroke="rgba(200,245,255,0.45)"
-          strokeWidth="18"
-          fill="none"
-          filter="url(#atm-tight)"
-          opacity={glowOpacity}
-        />
-
-        {/* Crisp horizon line */}
-        <path
-          d="M-80,92 C360,38 1080,38 1520,92"
-          stroke="rgba(255,255,255,0.55)"
-          strokeWidth="1.2"
-          fill="none"
-          filter="url(#atm-tight)"
-          opacity={glowOpacity}
-        />
-
-        {/* Surface fill. Ftays opaque once visible so no hard rectangular seam shows */}
-        <path
-          d="M-80,92 C360,38 1080,38 1520,92 L1520,120 L-80,120 Z"
-          fill="#F5F7FA"
-          opacity={fillOpacity}
-        />
-      </svg>
 
       {/* Centered content */}
       <Stack
@@ -172,32 +97,40 @@ export function HeroSection() {
           px: { xs: 3, md: 8 },
           maxWidth: 860,
           width: '100%',
+          transform: `scale(${contentScale})`,
+          opacity: contentOpacity,
+          transformOrigin: 'center center',
+          willChange: 'transform, opacity',
         }}
       >
         {/* Logo mark */}
         <Box
           sx={{
-            width: { xs: 86, md: 112 },
+            width: { xs: 86, md: 128, lg: 160 },
             filter: 'drop-shadow(0 0 32px rgba(85,221,255,0.5)) drop-shadow(0 0 64px rgba(85,221,255,0.2))',
           }}
         >
           <AnimatedKnotLogo className="hero-knot-logo" />
         </Box>
 
-        {/* Headline. Ford by word */}
+        {/* Headline — word by word, guaranteed line break between lines */}
         <Typography
           variant="h1"
           component="h1"
           sx={{ fontSize: { xs: '3.2rem', sm: '4.8rem', md: '6.5rem' }, lineHeight: 1.02, letterSpacing: '-0.04em', fontWeight: 300 }}
         >
-          {HEADLINE_WORDS.map((word, i) => (
-            <Box
-              key={i}
-              component="span"
-              className="hero-word"
-              sx={{ display: 'inline-block', opacity: 0, mr: '0.22em' }}
-            >
-              {word}
+          {HEADLINE_LINES.map((line, li) => (
+            <Box key={li} component="span" sx={{ display: 'block' }}>
+              {line.map((word, wi) => (
+                <Box
+                  key={wi}
+                  component="span"
+                  className="hero-word"
+                  sx={{ display: 'inline-block', opacity: 0, mr: '0.22em' }}
+                >
+                  {word}
+                </Box>
+              ))}
             </Box>
           ))}
         </Typography>

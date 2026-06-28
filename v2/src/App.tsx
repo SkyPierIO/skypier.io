@@ -19,7 +19,12 @@ import LuisPhoto from './assets/brand/img/luis.webp'
 import { SiteHeader } from './components/layout/SiteHeader'
 import { SiteFooter } from './components/layout/SiteFooter'
 import { HeroSection } from './components/sections/HeroSection'
+import { PlanetHorizon } from './components/brand/PlanetHorizon'
 import { ProductsPage } from './components/pages/ProductsPage'
+import { ProductOverviewSection } from './components/sections/ProductOverviewSection'
+import { ManifestoSection } from './components/sections/ManifestoSection'
+import { BetaSection } from './components/sections/BetaSection'
+import { FaqSection } from './components/sections/FaqSection'
 import { TeamSection } from './components/sections/TeamSection'
 import { ContactSection } from './components/sections/ContactSection'
 import type { ContactFormState, NavItem, Product, SocialLink, TeamMember } from './components/landing.types'
@@ -196,23 +201,38 @@ function App() {
           <HeroSection />
 
           <ThemeProvider theme={lightSectionTheme}>
-            <Box sx={{ backgroundColor: 'background.default' }}>
-              <Container component="main" maxWidth="lg" sx={{ py: { xs: 3, md: 6 }, display: 'grid', gap: { xs: 5, md: 7 } }}>
+            <Box sx={{ position: 'relative', zIndex: 1, backgroundColor: 'background.default', color: 'text.primary', overflow: 'visible' }}>
+
+              <PlanetHorizon />
+
+              <Container component="main" maxWidth="lg" sx={{ py: { xs: 3, md: 6 }, display: 'grid', gap: { xs: 7, md: 11 } }}>
+                <ProductOverviewSection products={products} />
+                <ManifestoSection
+                  eyebrow={landingContent.manifesto.eyebrow}
+                  title={landingContent.manifesto.title}
+                  intro={landingContent.manifesto.intro}
+                  points={landingContent.manifesto.points}
+                />
+                <BetaSection
+                  eyebrow={landingContent.beta.eyebrow}
+                  title={landingContent.beta.title}
+                  description={landingContent.beta.description}
+                  perks={landingContent.beta.perks}
+                  waitlistEmail={waitlistEmail}
+                  onWaitlistEmailChange={setWaitlistEmail}
+                  onWaitlistSubmit={handleWaitlistSubmit}
+                  waitlistStatus={waitlistStatus}
+                />
                 <TeamSection teamMembers={teamMembers} />
-                {/* Testimonials section is temporarily hidden as requested. */}
-                {/* <TestimonialsSection testimonials={landingContent.testimonials} /> */}
                 <ContactSection
                   contactPurposes={contactPurposes}
                   contactForm={contactForm}
                   onContactChange={handleContactChange}
                   onContactSubmit={handleContactSubmit}
                   contactStatus={contactStatus}
-                  waitlistEmail={waitlistEmail}
-                  onWaitlistEmailChange={setWaitlistEmail}
-                  onWaitlistSubmit={handleWaitlistSubmit}
-                  waitlistStatus={waitlistStatus}
                   socialLinks={socialLinks}
                 />
+                <FaqSection faqs={landingContent.faqs} />
               </Container>
             </Box>
           </ThemeProvider>
