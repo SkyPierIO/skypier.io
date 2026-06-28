@@ -193,7 +193,7 @@ export const landingContent = {
     intro:
       'Skypier does not reinvent the hard parts of decentralization. We build on the same battle-tested protocols that power Ethereum, Filecoin, and IPFS, so privacy comes with the reliability of infrastructure that already secures billions in value.',
     items: [
-      { name: 'libp2p', logo: '/logos/libp2p.png', href: 'https://libp2p.io' },
+      { name: 'libp2p', logo: 'https://libp2p.io/img/libp2p-logo-full.svg', href: 'https://libp2p.io' },
       { name: 'The Graph', logo: '/logos/thegraph.png', href: 'https://thegraph.com' },
       { name: 'Reown', logo: '/logos/reown.png', href: 'https://reown.com' },
       { name: 'Ethereum', logo: '/logos/ethereum.svg', href: 'https://ethereum.org' },

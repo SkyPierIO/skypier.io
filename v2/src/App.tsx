@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { FormEvent, ReactNode } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
 import { lightSectionTheme } from './theme'
@@ -122,38 +122,19 @@ function App() {
     setContactForm((prev) => ({ ...prev, [field]: value }))
   }
 
-  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setContactStatus('loading')
-
-    try {
-      const response = await fetch('https://formspree.io/f/xdoqaozn', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...contactForm,
-          subject: `${contactForm.purpose} New submission`,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Contact request failed')
-      }
-
-      setContactStatus('success')
-      setContactForm({
-        name: '',
-        purpose: contactPurposes[0],
-        email: '',
-        message: '',
-      })
-    } catch {
-      setContactStatus('error')
+  // The Formspree form (xdoqaozn) has reCAPTCHA enabled, which rejects AJAX
+  // submissions, so the contact form submits natively (like the V1 site) and
+  // Formspree redirects back here via its `_next` field. We surface the result
+  // from the query string set on that redirect.
+  useEffect(() => {
+    const status = new URLSearchParams(window.location.search).get('contact')
+    if (status === 'success' || status === 'error') {
+      setContactStatus(status)
+      const url = new URL(window.location.href)
+      url.searchParams.delete('contact')
+      window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`)
     }
-  }
+  }, [])
 
   const handleWaitlistSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -235,7 +216,6 @@ function App() {
                   contactPurposes={contactPurposes}
                   contactForm={contactForm}
                   onContactChange={handleContactChange}
-                  onContactSubmit={handleContactSubmit}
                   contactStatus={contactStatus}
                   socialLinks={socialLinks}
                 />

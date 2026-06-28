@@ -15,11 +15,25 @@ const scroll = keyframes`
 `
 
 export function TechStackSection({ eyebrow, title, intro, items }: TechStackSectionProps) {
-  // Duplicate the list so the marquee can loop seamlessly.
-  const loop = [...items, ...items]
+  // Repeat the list enough that a single set already overflows the viewport
+  // (otherwise a blank gap shows before the next set scrolls in), then duplicate
+  // it so the -50% shift loops seamlessly.
+  const oneSet = Array.from({ length: 3 }, () => items).flat()
+  const loop = [...oneSet, ...oneSet]
 
   return (
-    <Box id="tech" className="reveal" sx={{ scrollMarginTop: 92 }}>
+    <Box
+      id="tech"
+      className="reveal"
+      sx={{
+        scrollMarginTop: 92,
+        // This section is a grid item; without these the wide marquee track
+        // stretches the grid column and creates a page-wide horizontal scrollbar.
+        minWidth: 0,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+      }}
+    >
       <Stack spacing={1.2} sx={{ mb: { xs: 3, md: 4 }, alignItems: 'center', textAlign: 'center' }}>
         <Typography variant="overline" sx={{ color: 'primary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
           {eyebrow}
@@ -45,7 +59,10 @@ export function TechStackSection({ eyebrow, title, intro, items }: TechStackSect
             display: 'flex',
             alignItems: 'center',
             width: 'max-content',
-            gap: { xs: 5, md: 9 },
+            // Spacing lives on each item (as marginRight) instead of flex `gap`,
+            // so every item — including the one at the duplicate boundary — has a
+            // trailing gap. That makes one set's width exact and -50% seamless.
+            '& > a': { mr: { xs: 5, md: 9 } },
             animation: `${scroll} 28s linear infinite`,
             '@media (prefers-reduced-motion: reduce)': { animation: 'none' },
           }}
@@ -65,7 +82,7 @@ export function TechStackSection({ eyebrow, title, intro, items }: TechStackSect
                 alt={item.name}
                 loading="lazy"
                 sx={{
-                  height: { xs: 34, md: 46 },
+                  height: { xs: 60, md: 86 },
                   width: 'auto',
                   objectFit: 'contain',
                   opacity: 0.65,
