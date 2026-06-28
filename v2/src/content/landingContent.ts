@@ -79,10 +79,10 @@ export const landingContent = {
       summary: 'Ad and tracker blocker',
       description:
         'Blackhole is currently in announcement mode and focused on delivering high-signal ad and tracker blocking with transparent controls.',
-      image: '/blackhole.png',
+      image: '/screenshot-blackhole.png',
       overview:
         'Blackhole is a network-level ad and tracker blocker that swallows the surveillance scripts most apps quietly rely on. Instead of trusting every site to behave, Blackhole filters trackers, telemetry, and intrusive ads before they ever reach your device, with transparent, user-controlled rules and no hidden allow-lists sold to advertisers. Currently in announcement mode, with early access opening to the beta community first.',
-      stats: ['Coming soon', 'Early adopter list opening', 'Privacy-first filtering'],
+      stats: ['Coming soon', 'Early adopter list opening', 'Integrated with VPN nodes for operator security.'],
       badge: 'Coming soon',
       ctas: [
         {
@@ -150,7 +150,7 @@ export const landingContent = {
   ],
   manifesto: {
     eyebrow: 'A different model',
-    title: "Don't trust traditional applications",
+    title: 'When trust is broken',
     intro:
       "The Web2 model is built on data extraction and valorization. Your behavior, your contacts and your location, all packaged and sold. And it doesn't stop when you pay: even a Pro subscription rarely buys you out of the surveillance, it just adds a receipt. Skypier is built the other way around. We don't know you. We're just delivering the software to people, and the rest stays yours.",
     points: [
@@ -186,6 +186,18 @@ export const landingContent = {
     description:
       'Be among the first to run the decentralized stack end to end. Beta members get early builds, direct access to the team, and a say in what ships next. No spam, just product updates as new releases land.',
     perks: ['Early access to new releases', 'Direct line to the founders', 'Shape the roadmap'],
+  },
+  techStack: {
+    eyebrow: 'Built on giants',
+    title: 'Standing on proven, open infrastructure',
+    intro:
+      'Skypier does not reinvent the hard parts of decentralization. We build on the same battle-tested protocols that power Ethereum, Filecoin, and IPFS, so privacy comes with the reliability of infrastructure that already secures billions in value.',
+    items: [
+      { name: 'libp2p', logo: '/logos/libp2p.png', href: 'https://libp2p.io' },
+      { name: 'The Graph', logo: '/logos/thegraph.png', href: 'https://thegraph.com' },
+      { name: 'Reown', logo: '/logos/reown.png', href: 'https://reown.com' },
+      { name: 'Ethereum', logo: '/logos/ethereum.svg', href: 'https://ethereum.org' },
+    ],
   },
   faqs: [
     {

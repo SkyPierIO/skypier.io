@@ -24,6 +24,7 @@ import { ProductsPage } from './components/pages/ProductsPage'
 import { ProductOverviewSection } from './components/sections/ProductOverviewSection'
 import { ManifestoSection } from './components/sections/ManifestoSection'
 import { BetaSection } from './components/sections/BetaSection'
+import { TechStackSection } from './components/sections/TechStackSection'
 import { FaqSection } from './components/sections/FaqSection'
 import { TeamSection } from './components/sections/TeamSection'
 import { ContactSection } from './components/sections/ContactSection'
@@ -222,6 +223,12 @@ function App() {
                   onWaitlistEmailChange={setWaitlistEmail}
                   onWaitlistSubmit={handleWaitlistSubmit}
                   waitlistStatus={waitlistStatus}
+                />
+                <TechStackSection
+                  eyebrow={landingContent.techStack.eyebrow}
+                  title={landingContent.techStack.title}
+                  intro={landingContent.techStack.intro}
+                  items={landingContent.techStack.items}
                 />
                 <TeamSection teamMembers={teamMembers} />
                 <ContactSection

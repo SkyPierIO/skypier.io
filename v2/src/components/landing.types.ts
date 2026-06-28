@@ -34,6 +34,12 @@ export type Faq = {
   answer: string
 }
 
+export type TechItem = {
+  name: string
+  logo: string
+  href: string
+}
+
 export type TeamMember = {
   name: string
   role: string
