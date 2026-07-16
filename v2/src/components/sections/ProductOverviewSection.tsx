@@ -1,4 +1,4 @@
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
+// import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
 import { Box, Button, Chip, Stack, Typography } from '@mui/material'
 import type { Product } from '../landing.types'
 
@@ -9,7 +9,7 @@ type ProductOverviewSectionProps = {
 export function ProductOverviewSection({ products }: ProductOverviewSectionProps) {
   return (
     <Box id="products" className="reveal" sx={{ scrollMarginTop: 92 }}>
-      <Stack spacing={1.4} sx={{ mb: { xs: 4, md: 7 }, alignItems: 'center', textAlign: 'center' }}>
+      <Stack className="scroll-reveal" spacing={1.4} sx={{ mb: { xs: 4, md: 7 }, alignItems: 'center', textAlign: 'center' }}>
         <Typography variant="overline" sx={{ color: 'primary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
           Product overview
         </Typography>
@@ -26,6 +26,7 @@ export function ProductOverviewSection({ products }: ProductOverviewSectionProps
           return (
             <Box
               key={product.name}
+              className="scroll-reveal"
               sx={{
                 display: 'grid',
                 gap: { xs: 3, md: 6 },
@@ -48,6 +49,9 @@ export function ProductOverviewSection({ products }: ProductOverviewSectionProps
 
                 <Typography sx={{ color: 'text.secondary' }}>{product.overview ?? product.description}</Typography>
 
+                {/* Hidden until we have real numbers — product.stats currently holds placeholder data
+                    (42k+ active users, 67 countries covered, …). Uncomment along with the
+                    CheckCircleRoundedIcon import above to restore the checklist.
                 <Stack spacing={0.8} sx={{ pt: 0.5 }}>
                   {product.stats.map((stat) => (
                     <Stack key={stat} direction="row" spacing={1} sx={{ alignItems: 'center' }}>
@@ -58,6 +62,7 @@ export function ProductOverviewSection({ products }: ProductOverviewSectionProps
                     </Stack>
                   ))}
                 </Stack>
+                */}
 
                 <Stack direction="row" spacing={1} sx={{ pt: 1, flexWrap: 'wrap' }}>
                   {product.ctas.map((cta) =>

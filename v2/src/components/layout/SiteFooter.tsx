@@ -6,6 +6,12 @@ type SiteFooterProps = {
   currentYear: number
 }
 
+const productLinks = [
+  { label: 'Skypier VPN', href: '/products#skypier-vpn' },
+  { label: 'Skypier dM', href: '/products#skypier-dm' },
+  { label: 'Skypier Blackhole', href: '/products#skypier-blackhole' },
+]
+
 export function SiteFooter({ currentYear }: SiteFooterProps) {
   return (
     <Box 
@@ -58,23 +64,24 @@ export function SiteFooter({ currentYear }: SiteFooterProps) {
               Products
             </Typography>
             <Stack spacing={1.5} sx={{ alignItems: { xs: 'center', md: 'flex-start' } }}>
-              <Link 
-                href="https://tinglik.notion.site/On-boarding-the-SkyPier-Network-0967d277dfee49dfb2e537a1b89961b6"
-                target="_blank"
-                rel="noopener noreferrer"
-                underline="none"
-                sx={{ 
-                  color: 'rgba(255, 255, 255, 0.85)',
-                  fontSize: '0.875rem',
-                  transition: 'color 0.2s ease',
-                  '&:hover': { color: '#0ea5e9' }
-                }}
-              >
-                Skypier VPN
-              </Link>
-              <Typography 
-                variant="body2" 
-                sx={{ 
+              {productLinks.map((product) => (
+                <Link
+                  key={product.label}
+                  href={product.href}
+                  underline="none"
+                  sx={{
+                    color: 'rgba(255, 255, 255, 0.85)',
+                    fontSize: '0.875rem',
+                    transition: 'color 0.2s ease',
+                    '&:hover': { color: '#0ea5e9' }
+                  }}
+                >
+                  {product.label}
+                </Link>
+              ))}
+              <Typography
+                variant="body2"
+                sx={{
                   color: 'rgba(255, 255, 255, 0.85)',
                   opacity: 0.5,
                   cursor: 'not-allowed'
@@ -102,7 +109,19 @@ export function SiteFooter({ currentYear }: SiteFooterProps) {
               Useful Links
             </Typography>
             <Stack spacing={1.5} sx={{ alignItems: { xs: 'center', md: 'flex-start' } }}>
-              <Link 
+              <Link
+                href="/team"
+                underline="none"
+                sx={{
+                  color: 'rgba(255, 255, 255, 0.85)',
+                  fontSize: '0.875rem',
+                  transition: 'color 0.2s ease',
+                  '&:hover': { color: '#0ea5e9' }
+                }}
+              >
+                Our Team
+              </Link>
+              <Link
                 href="/terms-of-service"
                 underline="none"
                 sx={{ 

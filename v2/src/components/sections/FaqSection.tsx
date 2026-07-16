@@ -9,7 +9,7 @@ type FaqSectionProps = {
 export function FaqSection({ faqs }: FaqSectionProps) {
   return (
     <Box id="faq" className="reveal" sx={{ scrollMarginTop: 92 }}>
-      <Stack spacing={1.4} sx={{ mb: { xs: 3, md: 4 }, alignItems: 'center', textAlign: 'center' }}>
+      <Stack className="scroll-reveal" spacing={1.4} sx={{ mb: { xs: 3, md: 4 }, alignItems: 'center', textAlign: 'center' }}>
         <Typography variant="overline" sx={{ color: 'primary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
           FAQ
         </Typography>
@@ -19,7 +19,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
         </Typography>
       </Stack>
 
-      <Box sx={{ maxWidth: 820, mx: 'auto', display: 'grid', gap: 1.2 }}>
+      <Box className="scroll-reveal scroll-reveal-delay-1" sx={{ maxWidth: 820, mx: 'auto', display: 'grid', gap: 1.2 }}>
         {faqs.map((faq) => (
           <Accordion
             key={faq.question}

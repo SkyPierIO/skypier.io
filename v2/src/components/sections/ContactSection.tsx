@@ -1,4 +1,5 @@
 import { Box, Button, MenuItem, Paper, Stack, TextField, Typography } from '@mui/material'
+import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded'
 import type { ContactFormState, SocialLink } from '../landing.types'
 
 // Formspree form id (shared with the V1 site). reCAPTCHA is enabled on this
@@ -35,7 +36,7 @@ export function ContactSection({
 
   return (
     <Box id="contact" className="reveal reveal-delay-3" sx={{ scrollMarginTop: 92 }}>
-      <Stack spacing={1.4} sx={{ mb: 3, alignItems: 'center', textAlign: 'center' }}>
+      <Stack className="scroll-reveal" spacing={1.4} sx={{ mb: 3, alignItems: 'center', textAlign: 'center' }}>
         <Typography variant="overline" sx={{ color: 'primary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
           Get in touch
         </Typography>
@@ -45,7 +46,7 @@ export function ContactSection({
         </Typography>
       </Stack>
 
-      <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', lg: '1.5fr 1fr' } }}>
+      <Box className="scroll-reveal scroll-reveal-delay-1" sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', lg: '1.5fr 1fr' } }}>
         <Paper variant="outlined" sx={{ p: { xs: 2, md: 2.5 }, ...cardSx }}>
           <Box
             component="form"
@@ -114,17 +115,55 @@ export function ContactSection({
         </Paper>
 
         <Paper variant="outlined" sx={{ p: { xs: 2, md: 2.5 }, ...cardSx, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Typography variant="h6" sx={{ mb: 1 }}>
+          <Typography variant="overline" sx={{ color: 'primary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
             Follow Skypier
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5, mb: 2 }}>
             Stay current with releases and announcements from the community.
           </Typography>
-          <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
+          <Stack spacing={1}>
             {socialLinks.map((social) => (
-              <Button key={social.label} component="a" href={social.href} target="_blank" rel="noreferrer" variant="text" startIcon={social.icon}>
-                {social.label}
-              </Button>
+              <Box
+                key={social.label}
+                component="a"
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1.5,
+                  px: 1.75,
+                  py: 1.25,
+                  borderRadius: 2,
+                  textDecoration: 'none',
+                  color: 'text.primary',
+                  border: '1px solid rgba(10, 22, 48, 0.10)',
+                  transition: 'border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease',
+                  '& .social-arrow': {
+                    ml: 'auto',
+                    color: 'text.secondary',
+                    opacity: 0,
+                    transform: 'translateX(-4px)',
+                    transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  },
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    backgroundColor: 'rgba(10, 22, 48, 0.03)',
+                    transform: 'translateY(-1px)',
+                  },
+                  '&:hover .social-arrow': {
+                    opacity: 1,
+                    transform: 'translateX(0)',
+                  },
+                }}
+              >
+                <Box sx={{ display: 'flex', color: 'primary.main' }}>{social.icon}</Box>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                  {social.label}
+                </Typography>
+                <ArrowOutwardRoundedIcon className="social-arrow" fontSize="small" />
+              </Box>
             ))}
           </Stack>
         </Paper>

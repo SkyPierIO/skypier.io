@@ -63,7 +63,7 @@ export function BetaSection({
           gridTemplateColumns: { xs: '1fr', md: '1.1fr 0.9fr' },
         }}
       >
-        <Stack spacing={1.8}>
+        <Stack className="scroll-reveal" spacing={1.8}>
           <Typography variant="overline" sx={{ color: accent, letterSpacing: '0.22em', fontWeight: 700 }}>
             {eyebrow}
           </Typography>
@@ -85,6 +85,7 @@ export function BetaSection({
         </Stack>
 
         <Paper
+          className="scroll-reveal scroll-reveal-delay-1"
           variant="outlined"
           sx={{
             p: { xs: 2.5, md: 3 },

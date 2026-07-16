@@ -34,7 +34,7 @@ export function TechStackSection({ eyebrow, title, intro, items }: TechStackSect
         overflowX: 'hidden',
       }}
     >
-      <Stack spacing={1.2} sx={{ mb: { xs: 3, md: 4 }, alignItems: 'center', textAlign: 'center' }}>
+      <Stack className="scroll-reveal" spacing={1.2} sx={{ mb: { xs: 3, md: 4 }, alignItems: 'center', textAlign: 'center' }}>
         <Typography variant="overline" sx={{ color: 'primary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
           {eyebrow}
         </Typography>
@@ -60,7 +60,7 @@ export function TechStackSection({ eyebrow, title, intro, items }: TechStackSect
             alignItems: 'center',
             width: 'max-content',
             // Spacing lives on each item (as marginRight) instead of flex `gap`,
-            // so every item — including the one at the duplicate boundary — has a
+            // so every item - including the one at the duplicate boundary - has a
             // trailing gap. That makes one set's width exact and -50% seamless.
             '& > a': { mr: { xs: 5, md: 9 } },
             animation: `${scroll} 28s linear infinite`,

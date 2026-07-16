@@ -56,7 +56,7 @@ export function HeroSection() {
     return () => { wordsAnim.pause(); afterAnim.pause() }
   }, [])
 
-  // Content shrinks as the planet rises — scale 1→0.65, opacity 1→0 over first 70% of hero height
+  // Content shrinks as the planet rises - scale 1→0.65, opacity 1→0 over first 70% of hero height
   const shrink = Math.min(scrollY / (window.innerHeight * 0.7), 1)
   const contentScale = 1 - shrink * 0.35
   const contentOpacity = Math.max(0, 1 - shrink * 1.4)
@@ -113,7 +113,7 @@ export function HeroSection() {
           <AnimatedKnotLogo className="hero-knot-logo" />
         </Box>
 
-        {/* Headline — word by word, guaranteed line break between lines */}
+        {/* Headline - word by word, guaranteed line break between lines */}
         <Typography
           variant="h1"
           component="h1"

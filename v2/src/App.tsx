@@ -21,14 +21,17 @@ import { SiteFooter } from './components/layout/SiteFooter'
 import { HeroSection } from './components/sections/HeroSection'
 import { PlanetHorizon } from './components/brand/PlanetHorizon'
 import { ProductsPage } from './components/pages/ProductsPage'
+import { TeamPage } from './components/pages/TeamPage'
+import { TermsPage } from './components/pages/TermsPage'
+import { PrivacyPage } from './components/pages/PrivacyPage'
 import { ProductOverviewSection } from './components/sections/ProductOverviewSection'
 import { ManifestoSection } from './components/sections/ManifestoSection'
 import { BetaSection } from './components/sections/BetaSection'
 import { TechStackSection } from './components/sections/TechStackSection'
 import { FaqSection } from './components/sections/FaqSection'
-import { TeamSection } from './components/sections/TeamSection'
 import { ContactSection } from './components/sections/ContactSection'
 import type { ContactFormState, NavItem, Product, SocialLink, TeamMember } from './components/landing.types'
+import { useScrollReveal } from './hooks/useScrollReveal'
 import { landingContent } from './content/landingContent'
 import type { IconKey, ImageKey } from './content/landingContent'
 
@@ -92,6 +95,10 @@ const contactPurposes = landingContent.contactPurposes
 function App() {
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '/'
   const isProductsPage = pathname === '/products'
+  const isTeamPage = pathname === '/team'
+  const isTermsPage = pathname === '/terms-of-service'
+  const isPrivacyPage = pathname === '/privacy-policy'
+  const isLandingPage = !isProductsPage && !isTeamPage && !isTermsPage && !isPrivacyPage
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [contactStatus, setContactStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [waitlistStatus, setWaitlistStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -103,10 +110,23 @@ function App() {
     message: '',
   })
   const currentYear = useMemo(() => new Date().getFullYear(), [])
+
+  useScrollReveal()
+
+  // SPA pages render after the browser has already processed the URL fragment,
+  // so native anchor positioning misses (e.g. footer links to /products#skypier-dm).
+  // Re-run the jump once the target exists.
+  useEffect(() => {
+    const hash = window.location.hash
+    if (!hash) {
+      return
+    }
+    document.getElementById(hash.slice(1))?.scrollIntoView()
+  }, [])
   const currentNavItems = useMemo(
     () =>
       navItems.map((item) => {
-        if (!isProductsPage || !item.href.startsWith('#')) {
+        if (isLandingPage || !item.href.startsWith('#')) {
           return item
         }
 
@@ -115,7 +135,7 @@ function App() {
           href: `/${item.href}`,
         }
       }),
-    [isProductsPage],
+    [isLandingPage],
   )
 
   const handleContactChange = (field: keyof ContactFormState, value: string) => {
@@ -164,10 +184,10 @@ function App() {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh' }}>
+    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <SiteHeader
         navItems={currentNavItems}
-        brandHref={isProductsPage ? '/' : '#hero'}
+        brandHref={isLandingPage ? '#hero' : '/'}
         exploreHref="/products#catalog"
         exploreLabel={isProductsPage ? 'Browse catalog' : 'Explore products'}
         drawerOpen={drawerOpen}
@@ -177,9 +197,15 @@ function App() {
 
       {isProductsPage ? (
         <ProductsPage products={products} />
+      ) : isTeamPage ? (
+        <TeamPage teamMembers={teamMembers} />
+      ) : isTermsPage ? (
+        <TermsPage />
+      ) : isPrivacyPage ? (
+        <PrivacyPage />
       ) : (
         <>
-          {/* HeroSection is full-bleed — lives outside the constrained Container */}
+          {/* HeroSection is full-bleed - lives outside the constrained Container */}
           <HeroSection />
 
           <ThemeProvider theme={lightSectionTheme}>
@@ -211,7 +237,6 @@ function App() {
                   intro={landingContent.techStack.intro}
                   items={landingContent.techStack.items}
                 />
-                <TeamSection teamMembers={teamMembers} />
                 <ContactSection
                   contactPurposes={contactPurposes}
                   contactForm={contactForm}

@@ -12,7 +12,7 @@ export function SpeedBackground() {
     const container = containerRef.current
     if (!container) return
 
-    // engine.speed is the animejs engine parameter — it multiplies every
+    // engine.speed is the animejs engine parameter - it multiplies every
     // animation's playback rate globally, creating the "warp" sensation.
     engine.speed = 0.55
 
@@ -38,7 +38,7 @@ export function SpeedBackground() {
       // ── Emitter div ──────────────────────────────────────────────────────────
       // Anchored at screen center, rotated to the streak's outward direction.
       // Children inherit the rotated coordinate space, so translateX inside the
-      // emitter travels along the angle — no sin/cos math needed.
+      // emitter travels along the angle - no sin/cos math needed.
       const emitter = document.createElement('div')
       emitter.style.cssText = [
         'position:absolute',
@@ -51,7 +51,7 @@ export function SpeedBackground() {
       // ── Streak div ────────────────────────────────────────────────────────────
       // Positioned at the emitter origin (= screen center).
       // Gradient goes bright → transparent toward the leading edge so the tail
-      // glows while the head fades into the dark — classic comet / hyperspace look.
+      // glows while the head fades into the dark - classic comet / hyperspace look.
       const streak = document.createElement('div')
       streak.style.cssText = [
         'position:absolute',

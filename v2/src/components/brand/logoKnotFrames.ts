@@ -1,6 +1,6 @@
 export const HERO_LOGO_VIEWBOX = '0 0 132.29 132.29'
 
-// Real Skypier mark — the original filled path from logo.svg.
+// Real Skypier mark - the original filled path from logo.svg.
 export const LOGO_SHAPE_PATH =
   'm67.155 28.43c-12.475 0.03068-20.501 5.6044-24.843 11.319-0.95043 1.2506-1.7231 2.4924-2.3769 3.6854' +
   ' 0.85242-0.06155 1.6896-0.10378 2.4961-0.10608 2.6221-0.0076 4.9973 0.30292 7.1281 0.92792' +

@@ -14,7 +14,6 @@ export type ImageKey = 'ting' | 'groot' | 'megan' | 'luis'
 export const landingContent = {
   navItems: [
     { label: 'Products', href: '#products' },
-    { label: 'Team', href: '#team' },
     { label: 'Beta', href: '#beta' },
     { label: 'FAQ', href: '#faq' },
     { label: 'Contact', href: '#contact' },

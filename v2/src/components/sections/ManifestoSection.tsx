@@ -41,7 +41,7 @@ export function ManifestoSection({ eyebrow, title, intro, points }: ManifestoSec
           'radial-gradient(circle at 12% 12%, rgba(255,84,145,0.08), transparent 42%), radial-gradient(circle at 88% 80%, rgba(0,153,187,0.08), transparent 46%), linear-gradient(160deg, #ffffff 0%, #eef3fb 100%)',
       }}
     >
-      <Stack spacing={1.6} sx={{ mb: { xs: 3.5, md: 5 }, maxWidth: 820 }}>
+      <Stack className="scroll-reveal" spacing={1.6} sx={{ mb: { xs: 3.5, md: 5 }, maxWidth: 820 }}>
         <Typography variant="overline" sx={{ color: 'secondary.main', letterSpacing: '0.22em', fontWeight: 700 }}>
           {eyebrow}
         </Typography>
@@ -61,6 +61,7 @@ export function ManifestoSection({ eyebrow, title, intro, points }: ManifestoSec
         {points.map((point, index) => (
           <Paper
             key={point.title}
+            className={`scroll-reveal${index % 3 ? ` scroll-reveal-delay-${index % 3}` : ''}`}
             variant="outlined"
             sx={{
               p: 2.4,
