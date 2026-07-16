@@ -59,17 +59,22 @@ export const landingContent = {
           variant: 'contained' as const,
           icon: 'pwa' as const,
         },
+        // The mobile apps are not published yet, so the store pages 404. Keep the
+        // CTAs visible as placeholders (disabled + tooltip) and restore the hrefs
+        // once the apps are live:
+        //   Play Store: https://play.google.com/store/apps/details?id=io.skypier.chat
+        //   App Store:  https://apps.apple.com/us/app/skypierchat
         {
           label: 'Play Store',
-          href: 'https://play.google.com/store/apps/details?id=io.skypier.chat',
           variant: 'outlined' as const,
           icon: 'playStore' as const,
+          tooltip: 'Coming soon! The Android app is not published yet.',
         },
         {
           label: 'App Store',
-          href: 'https://apps.apple.com/us/app/skypierchat',
           variant: 'outlined' as const,
           icon: 'appStore' as const,
+          tooltip: 'Coming soon! The iOS app is not published yet.',
         },
       ],
     },

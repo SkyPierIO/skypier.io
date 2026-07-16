@@ -11,6 +11,8 @@ export type ProductCTA = {
   variant: 'contained' | 'outlined'
   icon?: ReactNode
   disabled?: boolean
+  // Shown on hover when the CTA has no href (e.g. "Coming soon" placeholders).
+  tooltip?: string
 }
 
 export type Product = {

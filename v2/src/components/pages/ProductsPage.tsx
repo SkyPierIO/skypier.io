@@ -1,5 +1,5 @@
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded'
-import { Box, Button, Card, CardContent, Chip, Container, Stack, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, Chip, Container, Stack, Tooltip, Typography } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 import { lightSectionTheme } from '../../theme'
 import { PlanetHorizon } from '../brand/PlanetHorizon'
@@ -181,9 +181,15 @@ export function ProductsPage({ products }: ProductsPageProps) {
                             {cta.label}
                           </Button>
                         ) : (
-                          <Button key={cta.label} variant={cta.variant} startIcon={cta.icon} disabled>
-                            {cta.label}
-                          </Button>
+                          // Placeholder CTA: disabled buttons swallow pointer events, so the
+                          // tooltip needs a wrapper; grid keeps the button at full column width.
+                          <Tooltip key={cta.label} title={cta.tooltip ?? ''}>
+                            <Box component="span" sx={{ display: 'grid' }}>
+                              <Button variant={cta.variant} startIcon={cta.icon} disabled>
+                                {cta.label}
+                              </Button>
+                            </Box>
+                          </Tooltip>
                         ),
                       )}
                     </Stack>

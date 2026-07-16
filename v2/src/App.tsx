@@ -189,7 +189,7 @@ function App() {
         navItems={currentNavItems}
         brandHref={isLandingPage ? '#hero' : '/'}
         exploreHref="/products#catalog"
-        exploreLabel={isProductsPage ? 'Browse catalog' : 'Explore products'}
+        exploreLabel={isProductsPage ? 'Browse catalog' : 'Download apps'}
         drawerOpen={drawerOpen}
         onOpenDrawer={() => setDrawerOpen(true)}
         onCloseDrawer={() => setDrawerOpen(false)}

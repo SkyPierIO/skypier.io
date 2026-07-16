@@ -1,5 +1,5 @@
 // import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded'
-import { Box, Button, Chip, Stack, Typography } from '@mui/material'
+import { Box, Button, Chip, Stack, Tooltip, Typography } from '@mui/material'
 import type { Product } from '../landing.types'
 
 type ProductOverviewSectionProps = {
@@ -49,7 +49,7 @@ export function ProductOverviewSection({ products }: ProductOverviewSectionProps
 
                 <Typography sx={{ color: 'text.secondary' }}>{product.overview ?? product.description}</Typography>
 
-                {/* Hidden until we have real numbers — product.stats currently holds placeholder data
+                {/* Hidden until we have real numbers: product.stats currently holds placeholder data
                     (42k+ active users, 67 countries covered, …). Uncomment along with the
                     CheckCircleRoundedIcon import above to restore the checklist.
                 <Stack spacing={0.8} sx={{ pt: 0.5 }}>
@@ -81,9 +81,15 @@ export function ProductOverviewSection({ products }: ProductOverviewSectionProps
                         {cta.label}
                       </Button>
                     ) : (
-                      <Button key={cta.label} variant={cta.variant} size="small" startIcon={cta.icon} disabled>
-                        {cta.label}
-                      </Button>
+                      // Placeholder CTA: disabled buttons swallow pointer events,
+                      // so the tooltip needs a wrapping span to fire.
+                      <Tooltip key={cta.label} title={cta.tooltip ?? ''}>
+                        <span>
+                          <Button variant={cta.variant} size="small" startIcon={cta.icon} disabled>
+                            {cta.label}
+                          </Button>
+                        </span>
+                      </Tooltip>
                     ),
                   )}
                 </Stack>
