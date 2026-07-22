@@ -32,6 +32,7 @@ import { FaqSection } from './components/sections/FaqSection'
 import { ContactSection } from './components/sections/ContactSection'
 import type { ContactFormState, NavItem, Product, SocialLink, TeamMember } from './components/landing.types'
 import { useScrollReveal } from './hooks/useScrollReveal'
+import { useDocumentSeo } from './hooks/useDocumentSeo'
 import { landingContent } from './content/landingContent'
 import type { IconKey, ImageKey } from './content/landingContent'
 
@@ -111,6 +112,49 @@ function App() {
   })
   const currentYear = useMemo(() => new Date().getFullYear(), [])
 
+  const seo = useMemo(() => {
+    if (isProductsPage) {
+      return {
+        path: '/products',
+        title: 'Products — Skypier VPN, dM & Blackhole',
+        description:
+          'Explore the Skypier product suite: the token-gated Skypier VPN, the peer-to-peer Skypier dM messenger, and the upcoming Skypier Blackhole.',
+      }
+    }
+
+    if (isTeamPage) {
+      return {
+        path: '/team',
+        title: 'Meet the Team — Skypier',
+        description: 'Meet the people building Skypier, a community-powered privacy network and messenger.',
+      }
+    }
+
+    if (isTermsPage) {
+      return {
+        path: '/terms-of-service',
+        title: 'Website Terms of Use — Skypier',
+        description: 'The terms and conditions that govern your use of the Skypier website and products.',
+      }
+    }
+
+    if (isPrivacyPage) {
+      return {
+        path: '/privacy-policy',
+        title: 'Privacy Policy — Skypier',
+        description: 'How Skypier Technologies, Inc. collects, uses, and protects your data.',
+      }
+    }
+
+    return {
+      path: '/',
+      title: 'Skypier — Decentralized Privacy VPN & Messenger',
+      description:
+        'Skypier is a community-powered privacy network: a token-gated decentralized VPN and a peer-to-peer messenger, built with no central server to seize, throttle, or shut down.',
+    }
+  }, [isProductsPage, isTeamPage, isTermsPage, isPrivacyPage])
+
+  useDocumentSeo(seo)
   useScrollReveal()
 
   // SPA pages render after the browser has already processed the URL fragment,

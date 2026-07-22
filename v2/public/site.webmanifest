@@ -1,0 +1,21 @@
+{
+  "name": "Skypier",
+  "short_name": "Skypier",
+  "description": "Skypier is a community-powered privacy network: a token-gated decentralized VPN and a peer-to-peer messenger.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1630",
+  "theme_color": "#101d39",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
