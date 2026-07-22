@@ -1,0 +1,37 @@
+{
+	"name": "skypier.io (Node + pnpm)",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
+
+	// The base image preinstalls a global pnpm ahead of corepack's shims on PATH,
+	// so `corepack prepare` silently has no effect here — install pnpm via npm instead.
+	// Pinned to 9.x to match this repo's lockfiles (root: lockfileVersion 6, v2/: lockfileVersion 9)
+	// and to avoid pnpm 10+'s stricter "approve builds" gate blocking native postinstall scripts.
+	"postCreateCommand": "npm install -g pnpm@9 && pnpm install && (cd v2 && pnpm install)",
+
+	"forwardPorts": [4321, 5173],
+	"portsAttributes": {
+		"4321": {
+			"label": "Astro dev server (root)",
+			"onAutoForward": "notify"
+		},
+		"5173": {
+			"label": "Vite dev server (v2)",
+			"onAutoForward": "notify"
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "esbenp.prettier-vscode"
+			}
+		}
+	},
+
+	"remoteUser": "node"
+}
